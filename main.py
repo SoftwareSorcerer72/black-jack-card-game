@@ -19,7 +19,7 @@ class Deck:
     def __init__(self):
         self.cards = []
         ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-        suits= ['hearts', 'diamonds', 'clubs', 'spades']
+        suits= ['Hearts', 'Diamonds', 'Clubs', 'Spades']
         for suit in suits:
             for rank in ranks:
                 self.card.append(Card(rank, suit))
@@ -57,4 +57,17 @@ player = Player()
 dealer = Dealer()
 
 
+# deals  initial cards with a throwaway variable
+
+for _ in range(2):
+    deck.deal(player)
+    deck.deal(dealer)
+
+while True:
+    print(f"Your hand: {[card.rank for card in player.hand]} with a total of {player.calculate_hand()}")
+    if player.calculate_hand() > 21:
+        print("You bust! The dealer wins.")
+        break
+    should_continue = input("Would you like to hit or stand? (h/s): ")
+    
 
