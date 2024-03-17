@@ -13,6 +13,17 @@ class Card:
     def __init__(self, rank, suit):
         self.rank = rank
         self.suit = suit
+        self.suit_symbols = {'Hearts': '\u2665', 'Diamonds': '\u2666', 'Clubs': '\u2663', 'Spades': '\u2660'}
+
+    def show(self):
+        print(f" _______")
+        print(f"|{self.rank:<2}     |")
+        print(f"|   {self.suit_symbols[self.suit]}   |")
+        print(f"|       |")
+        print(f"|   {self.suit_symbols[self.suit]}   |")
+        print(f"|_______|")
+
+
 
 class Deck:
     def __init__(self):
@@ -64,7 +75,10 @@ for _ in range(2):
 
 # players turn 
 while True:
-    print(f"Your hand: {[card.rank for card in player.hand]} with a total of {player.calculate_hand()}")
+    print("Your hand:")
+    for card in player.hand:
+        card.show()
+    print(f"Total: {player.calculate_hand()}")
     if player.calculate_hand() > 21:
         print("You bust! The dealer wins.")
         break
@@ -78,7 +92,10 @@ while True:
 if player.calculate_hand() <= 21:
     while dealer.should_hit():
         deck.deal(dealer)
-    print(f"Dealer's hand: {[card.rank for card in dealer.hand]} with a total of {dealer.calculate_hand()}")
+    print("Dealer's hand:")
+    for card in dealer.hand:
+        card.show()
+    print(f"Total: {dealer.calculate_hand()}")
     if dealer.calculate_hand() > 21 or dealer.calculate_hand() < player.calculate_hand():
         print("The Dealer Busts! You Win!")
     elif dealer.calculate_hand() > player.calculate_hand():
