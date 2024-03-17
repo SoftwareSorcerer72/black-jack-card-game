@@ -1,3 +1,4 @@
+import random
 # need to create a deck of cards a have player/dealer hands
 
 # deal the cards
@@ -46,44 +47,44 @@ class Dealer(Player):
         return self.calculate_hand() < 17
     
 
-#shuffles the deck (moved to gui)  
-# deck = Deck()
-# random.shuffle(deck.cards)
+#shuffles the deck 
+deck = Deck()
+random.shuffle(deck.cards)
 
-# creates player and dealer instances (moved to gui)
-# player = Player()
-# dealer = Dealer()
+# creates player and dealer instances 
+player = Player()
+dealer = Dealer()
 
 
-# deals  initial cards with a throwaway variable (moved to gui)
+# deals  initial cards with a throwaway variable 
 
-# for _ in range(2):
-#     deck.deal(player)
-#     deck.deal(dealer)
+for _ in range(2):
+    deck.deal(player)
+    deck.deal(dealer)
 
-# players turn (moved to gui)
-# while True:
-#     print(f"Your hand: {[card.rank for card in player.hand]} with a total of {player.calculate_hand()}")
-#     if player.calculate_hand() > 21:
-#         print("You bust! The dealer wins.")
-#         break
-#     should_continue = input("Would you like to hit or stand? (h/s): ")
-#     if should_continue.lower().strip() == "h":
-#         deck.deal(player)
-#     else:
-#         break
+# players turn 
+while True:
+    print(f"Your hand: {[card.rank for card in player.hand]} with a total of {player.calculate_hand()}")
+    if player.calculate_hand() > 21:
+        print("You bust! The dealer wins.")
+        break
+    should_continue = input("Would you like to hit or stand? (h/s): ")
+    if should_continue.lower().strip() == "h":
+        deck.deal(player)
+    else:
+        break
 
-# dealers turn (moved to gui)
-# if player.calculate_hand() <= 21:
-#     while dealer.should_hit():
-#         deck.deal(dealer)
-#     print(f"Dealer's hand: {[card.rank for card in dealer.hand]} with a total of {dealer.calculate_hand()}")
-#     if dealer.calculate_hand() > 21 or dealer.calculate_hand() < player.calculate_hand():
-#         print("The Dealer Busts! You Win!")
-#     elif dealer.calculate_hand() > player.calculate_hand():
-#         print("The Dealer wins!")
-#     else:
-#         print("It's a tie")
+# dealers turn 
+if player.calculate_hand() <= 21:
+    while dealer.should_hit():
+        deck.deal(dealer)
+    print(f"Dealer's hand: {[card.rank for card in dealer.hand]} with a total of {dealer.calculate_hand()}")
+    if dealer.calculate_hand() > 21 or dealer.calculate_hand() < player.calculate_hand():
+        print("The Dealer Busts! You Win!")
+    elif dealer.calculate_hand() > player.calculate_hand():
+        print("The Dealer wins!")
+    else:
+        print("It's a tie")
     
     
 
