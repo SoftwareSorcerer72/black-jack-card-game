@@ -1,5 +1,5 @@
 import tkinter as tk
-
+import random
 class BlackjackGui:
     def __init__(self, root):
         self.root = root
@@ -23,6 +23,20 @@ class BlackjackGui:
         self.stand_button = tk.Button(root, text="Stand", command=self.stand)
         self.stand_button.pack()
 
+        #creating game objects
+        
+        #shuffles the deck    
+        self.deck = Deck()
+        random.shuffle(self.deck.cards)
+        self.player = Player()
+        self.dealer = Dealer()
+        for _ in range(2):
+            self.deck.deal(self.player)
+            self.deck.deal(self.dealer)
+
+        self.update_labels()
+
+        
     def hit(self):
         pass
 
