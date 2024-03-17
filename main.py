@@ -70,5 +70,10 @@ while True:
         break
     should_continue = input("Would you like to hit or stand? (h/s): ")
     if should_continue.lower().strip() == "h":
+        deck.deal(player)
+    else:
+        break
+
+
     
 
