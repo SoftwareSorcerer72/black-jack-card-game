@@ -1,3 +1,5 @@
+import random
+
 # need to create a deck of cards a have player/dealer hands
 
 # deal the cards
@@ -41,3 +43,15 @@ class Player:
 class Dealer(Player):
     def should_hit(self):
         return self.calculate_hand() < 17
+    
+
+#shuffles the deck    
+deck = Deck()
+random.shuffle(deck.cards)
+
+# creates player and dealer instances
+player = Player()
+dealer = Dealer()
+
+
+
