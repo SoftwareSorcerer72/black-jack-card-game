@@ -22,9 +22,13 @@ class Deck:
     def deal(self, player)
         card = self.cards.pop()
         player.hand.append(card)
-        
-class Player:
-    pass
 
-class Dealer:
+class Player:
+    def __init__(self):
+        self.hand = []
+
+    def calculate_hand(self):
+        pass
+
+class Dealer(Player):
     pass
