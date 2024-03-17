@@ -22,7 +22,7 @@ class Deck:
         suits= ['Hearts', 'Diamonds', 'Clubs', 'Spades']
         for suit in suits:
             for rank in ranks:
-                self.card.append(Card(rank, suit))
+                self.cards.append(Card(rank, suit))
 
     def deal(self, player):
         card = self.cards.pop()
@@ -63,6 +63,7 @@ for _ in range(2):
     deck.deal(player)
     deck.deal(dealer)
 
+# players turn
 while True:
     print(f"Your hand: {[card.rank for card in player.hand]} with a total of {player.calculate_hand()}")
     if player.calculate_hand() > 21:
@@ -74,6 +75,17 @@ while True:
     else:
         break
 
-
+# dealers turn
+if player.calculate_hand() <= 21:
+    while dealer.should_hit():
+        deck.deal(dealer)
+    print(f"Dealer's hand: {[card.rank for card in dealer.hand]} with a total of {dealer.calculate_hand()}")
+    if dealer.calculate_hand() > 21 or dealer.calculate_hand() < player.calculate_hand():
+        print("The Dealer Busts! You Win!")
+    elif dealer.calculate_hand() > player.calculate_hand():
+        print("The Dealer wins!")
+    else:
+        print("It's a tie")
+    
     
 
