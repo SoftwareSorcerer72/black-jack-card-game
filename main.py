@@ -39,4 +39,5 @@ class Player:
         return value
 
 class Dealer(Player):
-    pass
+    def should_hit(self):
+        return self.calculate_hand() < 17
