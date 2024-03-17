@@ -28,7 +28,15 @@ class Player:
         self.hand = []
 
     def calculate_hand(self):
-        pass
+        value = 0
+        for card in self.hand:
+            if card.rank in ['J', 'Q', 'K']:
+                value += 10
+            elif card.rank == 'A':
+                value += 11 if value <= 10 else 1
+            else:
+                value += int(card.rank)
+        return value
 
 class Dealer(Player):
     pass
