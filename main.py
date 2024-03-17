@@ -69,5 +69,6 @@ while True:
         print("You bust! The dealer wins.")
         break
     should_continue = input("Would you like to hit or stand? (h/s): ")
+    if should_continue.lower().strip() == "h":
     
 
